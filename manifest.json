@@ -1,0 +1,13 @@
+{
+    "name": "CSSBoxToggle",
+    "manifest_version": 1,
+    "version": "0.9",
+    "permissions": [
+      "activeTab"
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    }
+}
+  

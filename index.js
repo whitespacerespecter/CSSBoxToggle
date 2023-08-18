@@ -1,14 +1,21 @@
+document.getElementById('injectStyleButton').addEventListener('click', function() {
+    injectStyleToActiveTab();
+});
 
-let injectHTML = document.createElement("style")
-let body = document.getElementsByClassName("html")
+function injectStyleToActiveTab() {
+    const code = `
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = \`
+            *{
+                background: rgb(0 100 0 / 0.1) !important;
+                outline: 1px solid limegreen !important;
+            }
+        \`;
+        document.head.appendChild(style);
+    `;
 
-injectHTML.innerHTML = `
-    <style>
-    *{
-        background: rgb(0 100 0 / 0.1) !important;
-        outline: 1px solid limegreen !important
-    }
-    </style>
-`
-
-body.app
+    chrome.tabs.executeScript({
+        code: code
+    });
+}
